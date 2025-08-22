@@ -10,10 +10,9 @@ class PlataformTag:
     def add_tag(self, tag):
         self.tags[tag] = self.tags.get(tag, 0) + 1
     
-    def process_record(self, record):
-        for tag in record["Tags"].split(","):
+    def process_tags(self, tags):
+        for tag in tags.split(","):
             self.add_tag(tag)
-            self.plataform_ocurrence += 1
     
     def sort_tags(self):
         self.tags = sorted(self.tags.items(), key=lambda x: x[1], reverse=True)
@@ -34,13 +33,16 @@ class PlataformTags:
     
     def process_record(self, record):
         if record["Linux"] == "True":
-            self.linux_tags.process_record(record)
+            self.linux_tags.process_tags(record["Tags"])
+            self.linux_tags.plataform_ocurrence += 1
 
         if record["Windows"] == "True":
-            self.windows_tags.process_record(record)
+            self.windows_tags.process_tags(record["Tags"])
+            self.windows_tags.plataform_ocurrence += 1
 
         if record["Mac"] == "True":
-            self.mac_tags.process_record(record)
+            self.mac_tags.process_tags(record["Tags"])
+            self.mac_tags.plataform_ocurrence += 1
     
     def sort_tags(self):
         self.linux_tags.sort_tags()
