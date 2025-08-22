@@ -1,5 +1,5 @@
 import csv
-from plataform_tags import PlataformTags
+from .plataform_tags import PlataformTags
 
 class SteamAnalizer:
     def __init__(self, csv_file):

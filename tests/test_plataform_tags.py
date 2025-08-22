@@ -1,6 +1,5 @@
 import os
-import pytest
-from steam_analizer.analizer import SteamAnalizer
+from steam_data.steam_analizer.analizer import SteamAnalizer
 
 class TestPlataformTags:
     def setup_method(self):
