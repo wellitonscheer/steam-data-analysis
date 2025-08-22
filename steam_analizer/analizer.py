@@ -12,7 +12,6 @@ with open("dataset/steam_games.csv") as csvfile:
     for row in reader:
         if reader.line_num == 1:
             headers = row
-            print(headers)
             continue
 
         record = {header: row[i] for i, header in enumerate(headers)}
@@ -20,7 +19,7 @@ with open("dataset/steam_games.csv") as csvfile:
 
         plataform_tags.process_record(record)
 
-        # if reader.line_num == 200:
+        # if reader.line_num == 10:
         #     break
     
     info = plataform_tags.get_info()
